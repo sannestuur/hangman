@@ -22,10 +22,37 @@ function showGuess(word, guesses) {
     else empty_answer.splice(i, 0, word[i]);
     }
 
-  return empty_answer.join(" ");
+  return empty_answer.join("");
 }
 
-console.log(showGuess('hello', ['l', 'a', 'e']) + 'x');
+// console.log('test show guess 1:', showGuess('hello', ['l']) === '_ _ l l _')
+// console.log('test show guess 2:', showGuess('hello', ['l', 'a', 'e']) === '_ e l l _')
 
-console.log('test show guess 1:', showGuess('hello', ['l']) === '_ _ l l _')
-console.log('test show guess 2:', showGuess('hello', ['l', 'a', 'e']) === '_ e l l _')
+// function isWinner(word, guesses) {
+//     console.log(showGuess(word, guesses));
+//     console.log(word);
+//     console.log(showGuess(word, guesses) == word);
+//     console.log(guesses.length <= 6);
+// }
+
+function isWinner(word, guesses) {
+    result = (showGuess(word, guesses) == word) && (guesses.length <= 6);
+    return result
+}
+
+// console.log('test winner 1:', !isWinner('hello', ['e', 'x']))
+// console.log('test winner 2:', isWinner('hello', ['o', 'l', 'e', 'h']))
+
+// to read from the console
+const readline = require('readline')
+const rl = readline.createInterface({input:process.stdin, output:process.stdout})
+
+function next(word, guesses) {
+    // check if lost
+    // check if won
+    // ask for the next letter
+    rl.question('next letter? ', answer => {
+        console.log('player wrote:', answer)
+        // do something with answer
+    })
+}
